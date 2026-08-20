@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ .Title }}</title>
+        <!-- TODO: Add internal stylesheet -->
+    </head>
+    <body>
+        <div class="header">
+            <h2>{{ .Title }}</h2>
+            <h4>{{ .Subtitle }}</h4>
+        </div>
+        {{ range .Links }}
+        <div class="container">
+            <h4>{{ .Title }}</h4>
+            <h6>{{ .Subtitle }}</h6>
+            <p>{{ .URL }}</p>
+        </div>
+        {{ else }}
+        <div class="container">
+            <p>You haven't adding any Links to <code>config.yaml</code></p>
+        </div>
+        {{ end }}
+    </body>
+</html>
