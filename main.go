@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
 // TODO: Create HTML template with Go snippets https://pkg.go.dev/html/template
 // TODO: Insert extracted YAML into HTML template
 // TODO: Export generated .html file
+// TODO: Add Stylesheets
 //
 // STRETCH
 // TODO: Add support for goicons https://pkg.go.dev/github.com/dimmerz92/go-icons#section-readme
@@ -21,13 +23,10 @@ func main() {
 	if err != nil {
 		fmt.Println("No .yaml file detected")
 		config_gen()
-		os.Exit(1)
+		log.Fatal(err)
 	}
 
-	// Parse YAML
-	config := config_parse(raw)
-
-	// Parse existing template
-	fmt.Printf("%+v\n", config) // Test print
+	// Render template
+	render_page(config_parse(raw))
 
 }

@@ -61,8 +61,8 @@ func config_parse(raw []byte) Config {
 type Config struct {
 	Title    string  `yaml:"title"`
 	Subtitle string  `yaml:"subtitle"`
-	Colours  Colours `yaml:"colours"`
 	Links    []Links `yaml:"links"`
+	Colours  Colours `yaml:"colours"`
 }
 
 type Colours struct {
