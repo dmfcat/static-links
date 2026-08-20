@@ -11,6 +11,7 @@ import (
 //
 // STRETCH
 // TODO: Add support for goicons https://pkg.go.dev/github.com/dimmerz92/go-icons#section-readme
+// TODO: Change config so it can generate a config with whitespace and comments
 
 func main() {
 	fileName := "config.yaml"

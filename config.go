@@ -44,6 +44,18 @@ func get_data() []uint8 {
 	return data
 }
 
+// Demarshal yaml into struct
+func config_parse(raw []byte) Config {
+	var config Config
+	err := yaml.Unmarshal(raw, &config)
+
+	if err != nil {
+		os.Exit(1)
+	}
+
+	return config
+}
+
 // TODO: Move this somewhere else? lol
 // Structs for `config.yaml`
 type Config struct {
