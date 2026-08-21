@@ -6,12 +6,7 @@ import (
 	"os"
 )
 
-// TODO: Create HTML template with Go snippets https://pkg.go.dev/html/template
-// TODO: Insert extracted YAML into HTML template
-// TODO: Export generated .html file
-// TODO: Add Stylesheets
-//
-// STRETCH
+// ROADMAP
 // TODO: Add support for goicons https://pkg.go.dev/github.com/dimmerz92/go-icons#section-readme
 // TODO: Change config so it can generate a config with whitespace and comments
 

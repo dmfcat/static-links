@@ -1,26 +1,87 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{ .Title }}</title>
-        <!-- TODO: Add internal stylesheet -->
-    </head>
-    <body>
-        <div class="header">
-            <h2>{{ .Title }}</h2>
-            <h4>{{ .Subtitle }}</h4>
-        </div>
-        {{ range .Links }}
-        <div class="container">
-            <h4>{{ .Title }}</h4>
-            <h6>{{ .Subtitle }}</h6>
-            <p>{{ .URL }}</p>
-        </div>
-        {{ else }}
-        <div class="container">
-            <p>You haven't adding any Links to <code>config.yaml</code></p>
-        </div>
-        {{ end }}
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{{ .Title }}</title>
+        <style>
+            :root {
+                --bg-colour: {{ .Colours.Background }};
+                --bg-title: {{ .Colours.Title }};
+                --bg-subtitle: {{ .Colours.Subtitle }};
+                --link-colour: {{ .Colours.LinkBackground }};
+                --link-title: {{ .Colours.Title }};
+                --accent: red;
+                --border: white;
+            }
+
+            body {
+                font-family: system-ui, sans-serif;
+                font-weight: normal;
+                max-width: 500px;
+                margin: auto;
+                text-align: center;
+                background-color: var(--bg-colour);
+            }
+
+            h2, h4, p {
+                margin: 4px 0;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .container {
+                border: 2px solid var(--border);
+                border-radius: 12px;
+                padding: 48px;
+                margin: 40px auto;
+                max-width: 400px;
+                background: linear-gradient(var(--bg-colour), var(--accent), var(--bg-colour));
+            }
+
+            .header {
+                margin-bottom: 48px;
+                h2 {
+                    color: var(--bg-title);
+                }
+                h4 {
+                    color: var(--bg-subtitle);
+                }
+            }
+
+            .links {
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 24px;
+                margin-bottom: 24px;
+                background-color: var(--link-colour);
+                transition: 0.5s;
+                color: var(--link-title);
+            }
+
+            .links:hover {
+                transform: scale(1.025);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+        </style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h2>{{ .Title }}</h2>
+				<h4>{{ .Subtitle }}</h4>
+			</div>
+			{{ range .Links }}
+				<a href="{{ .URL }}">
+					<div class="links">
+						<h4>{{ .Title }}</h4>
+					</div>
+				</a>
+			{{ else }}
+				<p>You haven't adding any Links to <code>config.yaml</code></p>
+			{{ end }}
+		</div>
+	</body>
 </html>

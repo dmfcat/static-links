@@ -1,15 +1,20 @@
 title: My Title
 subtitle: My Subtitle
 colours:
+  background: "#1d1d1b"
   title-colour: "#ffffff"
   subtitle-colour: "#d6d6d6"
-  background: "#1d1d1b"
   link-background: "#404040"
+  link-title-colour: "#ffffff"
   icon-colour: "#d6d6d6"
+  accent-colour: red
+  border-colour: white
 links:
-  - title: My Link Title 1
-    subtitle: My Link Subtitle 1
+  - title: Link 1
     url: https://example.com
-  - title: My Link Title 2
-    subtitle: My Link Subtitle 2
+  - title: Link 2
+    url: https://example.com
+  - title: Link 3
+    url: https://example.com
+  - title: Link 4
     url: https://example.com

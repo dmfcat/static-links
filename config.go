@@ -14,10 +14,7 @@ func config_gen() {
 	fmt.Println("See documentation for more info")
 	f, _ := os.Create("config.yaml")
 
-	data := get_data()
-
-	f.Write(data)
-	fmt.Println(string(data))
+	f.Write(get_data())
 
 	defer f.Close()
 }
@@ -28,15 +25,20 @@ func get_data() []uint8 {
 		Title:    "My Title",
 		Subtitle: "My Subtitle",
 		Colours: Colours{
+			Background:     "#1d1d1b",
 			Title:          "#ffffff",
 			Subtitle:       "#d6d6d6",
-			Background:     "#1d1d1b",
 			LinkBackground: "#404040",
+			LinkTitle:      "#ffffff",
 			Icon:           "#d6d6d6",
+			Accent:         "red",
+			Border:         "white",
 		},
 		Links: []Links{
-			{Title: "My Link Title 1", Subtitle: "My Link Subtitle 1", URL: "https://example.com"},
-			{Title: "My Link Title 2", Subtitle: "My Link Subtitle 2", URL: "https://example.com"},
+			{Title: "Link 1", URL: "https://example.com"},
+			{Title: "Link 2", URL: "https://example.com"},
+			{Title: "Link 3", URL: "https://example.com"},
+			{Title: "link 4", URL: "https://example.com"},
 		},
 	}
 
@@ -61,20 +63,22 @@ func config_parse(raw []byte) Config {
 type Config struct {
 	Title    string  `yaml:"title"`
 	Subtitle string  `yaml:"subtitle"`
-	Links    []Links `yaml:"links"`
 	Colours  Colours `yaml:"colours"`
+	Links    []Links `yaml:"links"`
 }
 
 type Colours struct {
+	Background     string `yaml:"background"`
 	Title          string `yaml:"title-colour"`
 	Subtitle       string `yaml:"subtitle-colour"`
-	Background     string `yaml:"background"`
 	LinkBackground string `yaml:"link-background"`
+	LinkTitle      string `yaml:"link-title-colour"`
 	Icon           string `yaml:"icon-colour"`
+	Accent         string `yaml:"accent-colour"`
+	Border         string `yaml:"border-colour"`
 }
 
 type Links struct {
-	Title    string `yaml:"title"`
-	Subtitle string `yaml:"subtitle"`
-	URL      string `yaml:"url"`
+	Title string `yaml:"title"`
+	URL   string `yaml:"url"`
 }
