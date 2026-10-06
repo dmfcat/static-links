@@ -9,6 +9,8 @@ import (
 // ROADMAP
 // TODO: Add support for goicons https://pkg.go.dev/github.com/dimmerz92/go-icons#section-readme
 // TODO: Change config so it can generate a config with whitespace and comments
+// TODO: Error checking / adding defaults for missing config lines
+// TODO: Support for JSON / TOML ?
 
 func main() {
 	fileName := "config.yaml"
