@@ -8,9 +8,12 @@ import (
 )
 
 // Generate a new default `config.yaml`
-// TODO: Could add path to where file is created
 func config_gen() {
-	fmt.Println("Generating `config.yaml` file")
+	wd, err := os.Getwd()
+	if err != nil {
+		os.Exit(1)
+	}
+	fmt.Printf("Generating `config.yaml` in %s\n", wd)
 	fmt.Println("See documentation for more info")
 	f, _ := os.Create("config.yaml")
 
